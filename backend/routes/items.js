@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+// const cors = require('cors');
 
 // Buat koneksi database
 const db = mysql.createConnection({
@@ -20,8 +21,8 @@ db.connect((err) => {
 // Tambah Item
 router.post('/add', (req, res) => {
     const newItem = {
-        name: req.body.name,
-        quantity: req.body.quantity
+        judul_berita: req.body.judul_berita,
+        ringkasan: req.body.ringkasan
     };
     const sql = 'INSERT INTO berita SET ?';
     db.query(sql, newItem, (err, result) => {
